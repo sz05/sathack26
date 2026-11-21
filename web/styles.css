@@ -16,7 +16,10 @@ section { background: var(--panel); border: 1px solid var(--line); border-radius
 .note { color: var(--ink-2); font-size: 13.5px; margin: 0 0 12px; }
 .transcript { list-style: none; margin: 0; padding: 0; max-height: 70vh; overflow-y: auto; }
 .transcript li { display: grid; grid-template-columns: 52px 1fr; gap: 10px; padding: 8px; border-radius: 8px; transition: background .3s; }
+.transcript li { cursor: pointer; }
 .transcript li.hit { background: color-mix(in srgb, var(--accent) 22%, transparent); }
+.transcript li.paused-here { box-shadow: inset 3px 0 0 var(--accent); }
+.paused { color: var(--accent); font: 13px ui-monospace, monospace; margin: 0 0 8px; }
 .transcript time { color: var(--ink-2); font-family: ui-monospace, monospace; font-size: 13px; }
 .answers { display: grid; gap: 12px; margin-bottom: 12px; }
 .turn .q { color: var(--ink-2); font-size: 13.5px; margin-bottom: 4px; }

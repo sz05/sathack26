@@ -7,6 +7,17 @@
   var form = document.getElementById("ask-form");
   var question = document.getElementById("question");
   var button = document.getElementById("ask-button");
+  var paused = document.getElementById("paused");
+  var pausedAt = 0;
+
+  // Clicking a transcript line stands in for pausing the video there; the doubt is sent with that moment.
+  function pauseAt(li) {
+    Array.prototype.forEach.call(transcript.children, function (x) { x.classList.toggle("paused-here", x === li); });
+    pausedAt = Number(li.dataset.t);
+    paused.hidden = false;
+    paused.textContent = "Paused at " + mmss(pausedAt) + ". Your doubt will be about this moment.";
+    question.focus();
+  }
 
   function mmss(t) {
     t = Math.floor(t);
@@ -20,6 +31,10 @@
       lec.transcript.forEach(function (line) {
         var li = document.createElement("li");
         li.dataset.t = line.t;
+        li.tabIndex = 0;
+        li.title = "Pause here";
+        li.onclick = function () { pauseAt(li); };
+        li.onkeydown = function (e) { if (e.key === "Enter") pauseAt(li); };
         var time = document.createElement("time");
         time.textContent = mmss(line.t);
         var text = document.createElement("span");
@@ -89,7 +104,7 @@
     answers.append(turn);
     button.disabled = true;
     return fetch("/api/ask", { method: "POST", headers: { "content-type": "application/json" },
-                               body: JSON.stringify({ question: q }) })
+                               body: JSON.stringify({ question: q, t: pausedAt }) })
       .then(function (r) {
         if (!r.ok) throw new Error("HTTP " + r.status);
         return readEvents(r, function (name, data) {
