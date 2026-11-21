@@ -9,6 +9,22 @@
   var button = document.getElementById("ask-button");
   var paused = document.getElementById("paused");
   var pausedAt = 0;
+  var SUGGESTIONS = ["binary search yahan kyun lag sakti hai?", "low aur high kya hain?",
+                     "possible function kaise check karta hai?", "overflow kaise avoid karein?"];
+
+  // Example doubts, shown until the first one is asked.
+  function showSuggestions() {
+    var box = document.createElement("div");
+    box.className = "suggestions";
+    SUGGESTIONS.forEach(function (s) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.textContent = s;
+      b.onclick = function () { question.value = s; form.requestSubmit(); };
+      box.append(b);
+    });
+    answers.append(box);
+  }
 
   // Clicking a transcript line stands in for pausing the video there; the doubt is sent with that moment.
   function pauseAt(li) {
@@ -89,6 +105,8 @@
   }
 
   function ask(q) {
+    var hints = answers.querySelector(".suggestions");
+    if (hints) hints.remove();
     var turn = document.createElement("div");
     turn.className = "turn";
     var qEl = document.createElement("div");
@@ -135,4 +153,5 @@
   });
 
   loadLecture();
+  showSuggestions();
 })();
