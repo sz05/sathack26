@@ -9,3 +9,4 @@ A dashboard for the teacher of a course. It answers one question: what are my st
 - **Kinds of doubts:** which step, why this step, my answer came out different, another method, something from an earlier lecture, and more.
 - **Language:** whether students ask in Hinglish or English.
 - **Suggested fixes:** a short AI summary of what students find confusing in a part, and the top things to re-explain in a lecture.
+- **Live doubts:** new doubts appear as students ask them.
