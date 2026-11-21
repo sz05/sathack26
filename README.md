@@ -14,8 +14,12 @@ Students watch recorded lectures, get stuck on one line, and never find the answ
 | Part | State |
 | --- | --- |
 | Problem and user research | Done |
+| Ask a doubt, answer with links to the lecture moment | Working (local demo) |
+| Step-by-step explanations on the teacher's board | Working (local demo) |
+| Teacher view: where students get stuck | Working (local demo) |
 | Demo video | Planned |
-| Live demo | Planned |
+
+More: [overview](docs/overview.md), [teacher view](docs/teacher-view.md), [roadmap](docs/roadmap.md).
 
 ## Running it
 
