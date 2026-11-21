@@ -10,3 +10,7 @@ A dashboard for the teacher of a course. It answers one question: what are my st
 - **Language:** whether students ask in Hinglish or English.
 - **Suggested fixes:** a short AI summary of what students find confusing in a part, and the top things to re-explain in a lecture.
 - **Live doubts:** new doubts appear as students ask them.
+
+## Why it matters
+
+Teachers usually find out what confused students only from scattered comments.
