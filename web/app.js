@@ -30,6 +30,26 @@
     });
   }
 
+  // Scroll the transcript to the line spoken at time t and highlight it for a moment.
+  function jumpTo(t) {
+    var lines = Array.prototype.slice.call(transcript.children);
+    var line = lines.filter(function (li) { return Number(li.dataset.t) <= t; }).pop() || lines[0];
+    if (!line) return;
+    line.scrollIntoView({ behavior: "smooth", block: "center" });
+    line.classList.add("hit");
+    setTimeout(function () { line.classList.remove("hit"); }, 1600);
+  }
+
+  function chip(t) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "chip";
+    b.textContent = "▶ " + mmss(t);
+    b.setAttribute("aria-label", "Go to " + mmss(t) + " in the lecture");
+    b.onclick = function () { jumpTo(t); };
+    return b;
+  }
+
   // Read a text/event-stream response and call onEvent(name, data) for each event.
   function readEvents(response, onEvent) {
     var reader = response.body.getReader(), decoder = new TextDecoder(), buf = "";
@@ -70,6 +90,7 @@
         if (!r.ok) throw new Error("HTTP " + r.status);
         return readEvents(r, function (name, data) {
           if (name === "delta") aEl.append(document.createTextNode(data.text));
+          else if (name === "cite") aEl.append(chip(data.t), document.createTextNode(" "));
         });
       })
       .catch(function () { aEl.textContent = "Something went wrong. Please try again."; })
