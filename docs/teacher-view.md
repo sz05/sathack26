@@ -13,4 +13,4 @@ A dashboard for the teacher of a course. It answers one question: what are my st
 
 ## Why it matters
 
-Teachers usually find out what confused students only from scattered comments.
+Teachers usually find out what confused students only from scattered comments. The teacher view turns every doubt into a signal about the lecture itself.
