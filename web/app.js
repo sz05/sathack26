@@ -81,6 +81,10 @@
     qEl.textContent = q;
     var aEl = document.createElement("div");
     aEl.className = "a";
+    var waiting = document.createElement("span");
+    waiting.className = "waiting";
+    waiting.textContent = "thinking…";
+    aEl.append(waiting);
     turn.append(qEl, aEl);
     answers.append(turn);
     button.disabled = true;
@@ -89,6 +93,7 @@
       .then(function (r) {
         if (!r.ok) throw new Error("HTTP " + r.status);
         return readEvents(r, function (name, data) {
+          waiting.remove();
           if (name === "delta") aEl.append(document.createTextNode(data.text));
           else if (name === "cite") aEl.append(chip(data.t), document.createTextNode(" "));
         });

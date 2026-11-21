@@ -21,6 +21,7 @@ section { background: var(--panel); border: 1px solid var(--line); border-radius
 .answers { display: grid; gap: 12px; margin-bottom: 12px; }
 .turn .q { color: var(--ink-2); font-size: 13.5px; margin-bottom: 4px; }
 .turn .a { white-space: pre-wrap; }
+.waiting { color: var(--ink-2); font-style: italic; }
 .chip { display: inline-block; margin: 0 4px; padding: 0 8px; border: 1px solid var(--accent); border-radius: 999px;
         background: none; color: var(--accent); font: 12.5px ui-monospace, monospace; cursor: pointer; }
 form { display: flex; gap: 8px; }
