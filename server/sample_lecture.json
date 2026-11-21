@@ -42,5 +42,68 @@
       "t": 560,
       "text": "Common galti: mid ke liye (low + high) / 2 likhna jab values bahut badi hon. Overflow se bachne ke liye low + (high - low) / 2 likho."
     }
+  ],
+  "sample_answers": [
+    {
+      "keywords": [
+        "monotonic",
+        "kyun lag",
+        "why binary",
+        "why does binary",
+        "kaise pata"
+      ],
+      "parts": [
+        {
+          "text": "Binary search isliye lag sakti hai kyunki possible() monotonic hai: agar limit X chal jaati hai, toh usse badi har limit bhi chalegi.",
+          "at": 300
+        },
+        {
+          "text": "Isliye answer ke ek taraf saari values fail hoti hain aur doosri taraf saari pass, aur hum beech mein boundary dhoondhte hain.",
+          "at": 370
+        }
+      ]
+    },
+    {
+      "keywords": [
+        "range",
+        "low",
+        "high",
+        "start"
+      ],
+      "parts": [
+        {
+          "text": "Low sabse badi book ke pages hain, kyunki wo book kisi ek student ko poori deni hi padegi.",
+          "at": 110
+        },
+        {
+          "text": "High saari books ka sum hai: agar ek hi student sab padh le, tab bhi isse zyada nahi chahiye.",
+          "at": 110
+        }
+      ]
+    },
+    {
+      "keywords": [
+        "overflow",
+        "mid"
+      ],
+      "parts": [
+        {
+          "text": "Mid ke liye low + (high - low) / 2 likho, (low + high) / 2 nahi, warna badi values par overflow ho sakta hai.",
+          "at": 560
+        }
+      ]
+    },
+    {
+      "keywords": [
+        "complexity",
+        "time"
+      ],
+      "parts": [
+        {
+          "text": "possible() ek pass mein O(n) hai, aur binary search log(sum) steps leti hai, toh total O(n log(sum)) hai.",
+          "at": 500
+        }
+      ]
+    }
   ]
 }
