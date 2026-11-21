@@ -1,0 +1,20 @@
+# Secrets and local config
+.env
+.env.*
+*.key
+*.pem
+
+# Data and generated output (lecture media, transcripts, eval results)
+data/
+out/
+*.jsonl
+*.mp4
+*.mp3
+*.pdf
+
+# Local tooling
+.dual-graph/
+.claude/
+.venv/
+__pycache__/
+*.log
