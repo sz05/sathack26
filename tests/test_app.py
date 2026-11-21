@@ -1,6 +1,10 @@
-from fastapi.testclient import TestClient
+import os
 
-from server.app import app, canned_reply
+os.environ.setdefault("DEMO_WORD_DELAY", "0")
+
+from fastapi.testclient import TestClient  # noqa: E402
+
+from server.app import app, canned_reply  # noqa: E402
 
 client = TestClient(app)
 

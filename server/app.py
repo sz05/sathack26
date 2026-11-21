@@ -7,6 +7,7 @@ every point links to the moment in the lecture it comes from.
 """
 import asyncio
 import json
+import os
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -16,7 +17,7 @@ from pydantic import BaseModel, Field
 
 ROOT = Path(__file__).resolve().parent
 LECTURE = json.loads((ROOT / "sample_lecture.json").read_text())
-WORD_DELAY_S = 0.03
+WORD_DELAY_S = float(os.environ.get("DEMO_WORD_DELAY", "0.03"))   # pause between streamed words; 0 in tests
 
 app = FastAPI(title="Lecture Doubt Solver (public demo)")
 
