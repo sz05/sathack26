@@ -22,6 +22,13 @@
       ]
     },
     {
+      "keywords": ["possible", "check", "function", "kaise check"],
+      "parts": [
+        {"text": "possible(limit) books ko order mein deta jaata hai, aur jab agli book se limit cross ho jaati toh naya student shuru karta hai.", "at": 170},
+        {"text": "Agar is tarah m se zyada students lag gaye, toh limit chhoti hai aur possible false deta hai.", "at": 240}
+      ]
+    },
+    {
       "keywords": ["range", "low", "high", "start"],
       "parts": [
         {"text": "Low sabse badi book ke pages hain, kyunki wo book kisi ek student ko poori deni hi padegi.", "at": 110},

@@ -39,3 +39,8 @@ def test_pause_time_is_accepted_but_never_negative():
 
 def test_page_is_served():
     assert "Ask a doubt" in client.get("/").text
+
+
+def test_possible_function_doubt_cites_where_it_was_explained():
+    reply = canned_reply("possible function kaise check karta hai?")
+    assert [p["at"] for p in reply["parts"]] == [170, 240]
