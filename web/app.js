@@ -100,9 +100,17 @@
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     var q = question.value.trim();
-    if (!q) return;
+    if (!q || button.disabled) return;
     question.value = "";
     ask(q);
+  });
+
+  // Enter sends the doubt; Shift+Enter starts a new line.
+  question.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
+      e.preventDefault();
+      form.requestSubmit();
+    }
   });
 
   loadLecture();
