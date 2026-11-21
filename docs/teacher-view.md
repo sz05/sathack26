@@ -6,3 +6,4 @@ A dashboard for the teacher of a course. It answers one question: what are my st
 
 - **Where students pause to ask:** doubts across the timeline of each lecture, minute by minute.
 - **Doubts per part:** the lecture split into its parts, with the number and kind of doubts in each.
+- **Kinds of doubts:** which step, why this step, my answer came out different, another method, something from an earlier lecture, and more.
