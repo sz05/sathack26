@@ -8,6 +8,7 @@ every point links to the moment in the lecture it comes from.
 import asyncio
 import json
 import os
+import re
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -38,9 +39,11 @@ class Doubt(BaseModel):
 
 
 def canned_reply(question: str) -> dict:
-    """The first sample answer whose keywords appear in the question, else the fallback."""
+    """The first sample answer with a keyword in the question as whole words ("low" must not match "overflow"),
+    else the fallback."""
     q = question.lower()
-    return next((a for a in LECTURE["sample_answers"] if any(k in q for k in a["keywords"])), LECTURE["fallback"])
+    return next((a for a in LECTURE["sample_answers"]
+                 if any(re.search(rf"\b{re.escape(k)}\b", q) for k in a["keywords"])), LECTURE["fallback"])
 
 
 def sse(event: str, data: dict) -> str:

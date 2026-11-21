@@ -44,3 +44,7 @@ def test_page_is_served():
 def test_possible_function_doubt_cites_where_it_was_explained():
     reply = canned_reply("possible function kaise check karta hai?")
     assert [p["at"] for p in reply["parts"]] == [170, 240]
+
+
+def test_keywords_match_whole_words_only():
+    assert [p["at"] for p in canned_reply("overflow kaise avoid karein?")["parts"]] == [560]
