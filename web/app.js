@@ -96,6 +96,7 @@
           waiting.remove();
           if (name === "delta") aEl.append(document.createTextNode(data.text));
           else if (name === "cite") aEl.append(chip(data.t), document.createTextNode(" "));
+          turn.scrollIntoView({ block: "end" });   // keep the newest words in view
         });
       })
       .catch(function () { aEl.textContent = "Something went wrong. Please try again."; })
