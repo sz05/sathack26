@@ -34,7 +34,7 @@ def lecture():
 
 class Doubt(BaseModel):
     question: str = Field(min_length=1, max_length=600)
-    t: float = 0
+    t: float = Field(0, ge=0)   # where the student paused, in seconds
 
 
 def canned_reply(question: str) -> dict:

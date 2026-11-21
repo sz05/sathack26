@@ -32,5 +32,10 @@ def test_empty_question_is_rejected():
     assert client.post("/api/ask", json={"question": ""}).status_code == 422
 
 
+def test_pause_time_is_accepted_but_never_negative():
+    assert client.post("/api/ask", json={"question": "mid kaise nikale?", "t": 372}).status_code == 200
+    assert client.post("/api/ask", json={"question": "mid kaise nikale?", "t": -5}).status_code == 422
+
+
 def test_page_is_served():
     assert "Ask a doubt" in client.get("/").text
