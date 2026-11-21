@@ -66,7 +66,8 @@
     var lines = Array.prototype.slice.call(transcript.children);
     var line = lines.filter(function (li) { return Number(li.dataset.t) <= t; }).pop() || lines[0];
     if (!line) return;
-    line.scrollIntoView({ behavior: "smooth", block: "center" });
+    var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    line.scrollIntoView({ behavior: still ? "auto" : "smooth", block: "center" });
     line.classList.add("hit");
     setTimeout(function () { line.classList.remove("hit"); }, 1600);
   }
