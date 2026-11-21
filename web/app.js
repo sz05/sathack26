@@ -30,5 +30,59 @@
     });
   }
 
+  // Read a text/event-stream response and call onEvent(name, data) for each event.
+  function readEvents(response, onEvent) {
+    var reader = response.body.getReader(), decoder = new TextDecoder(), buf = "";
+    function pump() {
+      return reader.read().then(function (r) {
+        if (r.done) return;
+        buf += decoder.decode(r.value, { stream: true });
+        var blocks = buf.split("\n\n");
+        buf = blocks.pop();
+        blocks.forEach(function (block) {
+          var name = "", data = "";
+          block.split("\n").forEach(function (line) {
+            if (line.indexOf("event: ") === 0) name = line.slice(7);
+            else if (line.indexOf("data: ") === 0) data += line.slice(6);
+          });
+          if (name) onEvent(name, data ? JSON.parse(data) : {});
+        });
+        return pump();
+      });
+    }
+    return pump();
+  }
+
+  function ask(q) {
+    var turn = document.createElement("div");
+    turn.className = "turn";
+    var qEl = document.createElement("div");
+    qEl.className = "q";
+    qEl.textContent = q;
+    var aEl = document.createElement("div");
+    aEl.className = "a";
+    turn.append(qEl, aEl);
+    answers.append(turn);
+    button.disabled = true;
+    return fetch("/api/ask", { method: "POST", headers: { "content-type": "application/json" },
+                               body: JSON.stringify({ question: q }) })
+      .then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return readEvents(r, function (name, data) {
+          if (name === "delta") aEl.append(document.createTextNode(data.text));
+        });
+      })
+      .catch(function () { aEl.textContent = "Something went wrong. Please try again."; })
+      .then(function () { button.disabled = false; });
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var q = question.value.trim();
+    if (!q) return;
+    question.value = "";
+    ask(q);
+  });
+
   loadLecture();
 })();
