@@ -1,0 +1,46 @@
+{
+  "title": "Binary search on the answer (sample lecture)",
+  "note": "A short made-up lecture for the public demo. The real product works on a teacher's own recorded lectures.",
+  "transcript": [
+    {
+      "t": 0,
+      "text": "Aaj hum binary search on the answer dekhenge. Ye tab kaam aata hai jab answer ek range mein ho aur hum check kar sakein ki koi value chalegi ya nahi."
+    },
+    {
+      "t": 45,
+      "text": "Example: n books hain, har book ke pages diye hain, aur m students mein baantni hain. Maximum pages jo kisi ek student ko milein, use minimum karna hai."
+    },
+    {
+      "t": 110,
+      "text": "Answer kam se kam sabse badi book jitna hoga, aur zyada se zyada saari books ke pages ka sum. Ye hamari range hai: low aur high."
+    },
+    {
+      "t": 170,
+      "text": "Ab ek function likhte hain: possible(limit). Hum books ko order mein dete jaate hain, aur jab limit cross hone wali ho toh naya student shuru karte hain."
+    },
+    {
+      "t": 240,
+      "text": "Agar students m se zyada lag gaye, toh ye limit bahut chhoti hai, possible false. Warna true."
+    },
+    {
+      "t": 300,
+      "text": "Important baat: agar limit X chal jaati hai, toh X se badi har limit bhi chalegi. Isko monotonic kehte hain, aur isi wajah se binary search lag sakti hai."
+    },
+    {
+      "t": 370,
+      "text": "Toh mid nikalo. Agar possible(mid) true hai, toh answer mid ya usse chhota ho sakta hai, high = mid. Warna low = mid + 1."
+    },
+    {
+      "t": 440,
+      "text": "Loop tab tak chalao jab tak low < high. End mein low hi hamara answer hai."
+    },
+    {
+      "t": 500,
+      "text": "Complexity: possible() ek baar O(n) hai, aur binary search log(sum) baar chalti hai. Total O(n log(sum))."
+    },
+    {
+      "t": 560,
+      "text": "Common galti: mid ke liye (low + high) / 2 likhna jab values bahut badi hon. Overflow se bachne ke liye low + (high - low) / 2 likho."
+    }
+  ]
+}
