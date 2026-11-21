@@ -22,4 +22,9 @@ def health():
     return {"ok": True, "mode": "demo"}
 
 
+@app.get("/api/lecture")
+def lecture():
+    return {"title": LECTURE["title"], "note": LECTURE["note"], "transcript": LECTURE["transcript"]}
+
+
 app.mount("/", StaticFiles(directory=ROOT.parent / "web", html=True), name="web")
