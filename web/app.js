@@ -43,6 +43,7 @@
   function loadLecture() {
     return fetch("/api/lecture").then(function (r) { return r.json(); }).then(function (lec) {
       document.getElementById("lecture-title").textContent = lec.title;
+      document.title = lec.title + " · Lecture Doubt Solver";
       document.getElementById("lecture-note").textContent = lec.note;
       lec.transcript.forEach(function (line) {
         var li = document.createElement("li");
