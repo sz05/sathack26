@@ -1,0 +1,31 @@
+:root {
+  --bg: #0b0c10; --panel: #13151b; --line: #2a2d36; --ink: #eef0f5; --ink-2: #a8acb8; --accent: #f4c84a;
+}
+@media (prefers-color-scheme: light) {
+  :root { --bg: #f7f6f2; --panel: #ffffff; --line: #e2e0da; --ink: #16171b; --ink-2: #5d5f66; --accent: #a87a00; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 system-ui, sans-serif; }
+header { display: flex; align-items: center; gap: 12px; padding: 14px 20px; border-bottom: 1px solid var(--line); }
+h1 { font-size: 18px; margin: 0; }
+h2 { font-size: 16px; margin: 0 0 6px; }
+.badge { font-size: 12px; color: var(--ink-2); border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; }
+main { display: grid; grid-template-columns: 1.3fr 1fr; gap: 16px; padding: 16px 20px; max-width: 1200px; margin: 0 auto; }
+@media (max-width: 800px) { main { grid-template-columns: 1fr; } }
+section { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; min-width: 0; }
+.note { color: var(--ink-2); font-size: 13.5px; margin: 0 0 12px; }
+.transcript { list-style: none; margin: 0; padding: 0; max-height: 70vh; overflow-y: auto; }
+.transcript li { display: grid; grid-template-columns: 52px 1fr; gap: 10px; padding: 8px; border-radius: 8px; transition: background .3s; }
+.transcript li.hit { background: color-mix(in srgb, var(--accent) 22%, transparent); }
+.transcript time { color: var(--ink-2); font-family: ui-monospace, monospace; font-size: 13px; }
+.answers { display: grid; gap: 12px; margin-bottom: 12px; }
+.turn .q { color: var(--ink-2); font-size: 13.5px; margin-bottom: 4px; }
+.turn .a { white-space: pre-wrap; }
+.chip { display: inline-block; margin: 0 4px; padding: 0 8px; border: 1px solid var(--accent); border-radius: 999px;
+        background: none; color: var(--accent); font: 12.5px ui-monospace, monospace; cursor: pointer; }
+form { display: flex; gap: 8px; }
+textarea { flex: 1; resize: none; background: var(--bg); color: var(--ink); border: 1px solid var(--line);
+           border-radius: 10px; padding: 10px; font: inherit; }
+button[type=submit] { background: var(--accent); color: #16130a; border: 0; border-radius: 10px; padding: 0 18px;
+                      font-weight: 600; cursor: pointer; }
+button:disabled { opacity: .5; cursor: default; }
